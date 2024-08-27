@@ -20,6 +20,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+
 const (
 	defaultSessionIDKey      = "SESSIONID"
 	defaultSessionExpiresKey = "EXPIRES"
@@ -390,6 +391,7 @@ func verifyUserSession(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusUnauthorized, "failed to get USERID value from session")
 	}
 
+	
 	now := time.Now()
 	if now.Unix() > sessionExpires.(int64) {
 		return echo.NewHTTPError(http.StatusUnauthorized, "session has expired")
